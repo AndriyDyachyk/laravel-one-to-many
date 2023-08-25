@@ -22,6 +22,8 @@ class ProjectSeeder extends Seeder
             $project->description = $faker->text(500);
             $project->used_apps = $faker->words( 2, true);
             $project->img = $faker->imageUrl(640, 480, 'animals', true);
+            $project->slug = $project->generateSlug($project->title);
+
             $project->save();
         }
     }
