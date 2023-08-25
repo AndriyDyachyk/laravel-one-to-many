@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|max:50',
             'description' => 'max:500',
             'used_apps' => 'max:50',
-            'img' => 'image|max:250'
+            'img' => 'image|max:250',
+            'category_id' => 'required|exists:categories,id'
         ];
     }
 
@@ -39,7 +40,9 @@ class StoreProjectRequest extends FormRequest
             'description.max' => 'La descrizione non può essere più lunga di :max caratteri',
             'used_apps.max' => 'le app utilizzate non può essere più lunghe di :max caratteri',
             'img.image' => 'Il file deve essere un immagine (jpg, jpeg, png, bmp, gif, svg, or webp)',
-            'img.max' => 'Il file non può essere più lungo di :max caratteri'
+            'img.max' => 'Il file non può essere più lungo di :max caratteri',
+            'category_id.required' => 'E necessario selezionare una categoria',
+            'category_id.exists' => 'La categoria che hai selezionato non è valida'
         ];
     }
 }

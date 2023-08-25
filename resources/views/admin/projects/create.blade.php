@@ -26,6 +26,18 @@
                     @enderror
                 </div>
                 <div class="form-group mb-3">
+                    <label class="control-label">Categoria:</label>
+                    <select class="form-control" name="category_id" id="category_id">
+                        <option value="">Seleziona categoria</option>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
                     <label class="control-label">Descrizione:</label>
                     <input type="text" id="descrizione" class="form-control" placeholder="Descrizione" name="descrizione" value="{{old('descrizione')}}">
                     @error('descrizione')

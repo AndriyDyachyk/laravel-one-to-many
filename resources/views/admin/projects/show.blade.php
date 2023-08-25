@@ -32,6 +32,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <img src="{{ asset('storage/'.$project->img)}}" width="500px">
+                        <p class="card-text">{{$project->category->name}}</p>
                         <p class="card-text">{{$project->description}}</p>
                         <p class="card-text">App utilizzate: {{$project->used_apps}}</p>
                     </div>

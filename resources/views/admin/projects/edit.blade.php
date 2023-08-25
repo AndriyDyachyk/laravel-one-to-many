@@ -15,14 +15,15 @@
                 @method('PUT')
                 <div class="form-group border p-4">
                     <div class="row">
+                        <!-- Name -->
                         <div class="col-12 my-3">
-                            <!-- Name -->
                             <label class="control-label my-3">Nome</label>
                             <input type="text" name="title" id="title" placeholder="Modifica il Titolo" class="form-control" value="{{ old('title') ?? $project->title }}" required>
                             @error('title')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <!-- img -->
                         <div class="form-group mb-3">
                             <div>
                                 <img src="{{ asset('storage/'.$project->img)}}" width="500px">
@@ -33,8 +34,21 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <!-- Categoria -->
+                        <div class="form-group mb-3">
+                            <label class="control-label">Categoria:</label>
+                            <select class="form-control" name="category_id" id="category_id">
+                                <option value="">Seleziona categoria</option>
+                                @foreach ($categories as $category)
+                                <option {{ $category->id == old('category_id', $project->category_id) ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="col-12 my-3">
-                            <!-- Img -->
+                            <!-- Descrizione -->
                             <label class="control-label my-3">Descrizione</label>
                             <input type="text" name="description" id="description" placeholder="Modifica la descrizione" class="form-control" value="{{ old('description') ?? $project->description }}">
                             @error('description')
@@ -42,7 +56,7 @@
                             @enderror
                         </div>
                         <div class="col-12 my-3">
-                            <!-- Genere -->
+                            <!-- App utilizzate -->
                             <label class="control-label my-3">App utilizzate</label>
                             <input type="text" name="used_apps" id="used_apps" placeholder="Modifica le app utilizzate" class="form-control" value="{{ old('used_apps') ?? $project->used_apps }}">
                             @error('used_apps')

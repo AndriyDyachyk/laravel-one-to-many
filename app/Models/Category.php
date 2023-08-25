@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -13,7 +14,7 @@ class Category extends Model
 
     protected $fillable = ['name' , 'slug'];
 
-    public function projects(){
+    public function projects(): HasMany{
         return $this->hasMany(Project::class);
     }
 }

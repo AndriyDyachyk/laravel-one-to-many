@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-use App\Model\Category;
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Project extends Model
 {
@@ -14,7 +15,7 @@ class Project extends Model
 
     protected $fillable = ['title','description','used_apps', 'img','slug', 'category_id'];
 
-    public function category(){
+    public function category(): BelongsTo{
         return $this->belongsTo(category::class);
     }
 
